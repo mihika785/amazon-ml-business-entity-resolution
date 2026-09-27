@@ -1,0 +1,27 @@
+# --- Core data handling ---
+pandas==2.2.3
+numpy==1.26.4
+
+# --- eval_harness.py: train/val split ---
+scikit-learn==1.5.2
+
+# --- blocking.py: BM25 candidate generation ---
+bm25s==0.2.6
+PyStemmer==2.2.0.3          # optional but speeds up bm25s stemming
+
+# --- normalize.py: address/name normalization ---
+unidecode==1.3.8            # strip diacritics/transliteration noise
+
+# --- features.py: string similarity features ---
+rapidfuzz==3.10.1           # fast Levenshtein / Jaro-Winkler / token ratios
+jellyfish==1.1.0            # Soundex / Metaphone / NYSIIS phonetic codes
+
+# --- train_model.py: matching model ---
+lightgbm==4.5.0             # MIT licensed, <8B params — satisfies license constraint
+
+# --- optional: embedding-based blocking (Stage 2) ---
+# sentence-transformers==3.2.1   # only if adding semantic ANN blocking later
+# faiss-cpu==1.9.0                # ANN search for embeddings
+
+# --- utility ---
+tqdm==4.66.5                # progress bars for long-running blocking/scoring loops

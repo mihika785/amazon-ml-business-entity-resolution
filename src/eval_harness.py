@@ -286,7 +286,7 @@ def print_report(report: Dict[str, object]) -> None:
 
 def main():
     parser = argparse.ArgumentParser(description="Split data or score predictions.")
-    sub = parser.add_subparsers(dest="command", required=True)
+    sub = parser.add_subparsers(dest="command")
 
     p_split = sub.add_parser("split", help="Create train_fold/val_fold from train data")
     p_split.add_argument("--gt", required=True, help="path to train_ground_truth.tsv")
@@ -301,6 +301,10 @@ def main():
     p_score.add_argument("--beta", type=float, default=0.5)
 
     args = parser.parse_args()
+
+    if args.command is None:
+        parser.print_help()
+        return
 
     if args.command == "split":
         make_split(args.gt, args.s1, args.out_dir, args.test_size, args.seed)
